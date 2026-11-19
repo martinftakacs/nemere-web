@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nemere Apartmanház – Balatonkenese</title>
+<meta name="description" content="Otthonos apartmanok egész évben Balatonkenese központjában, pár perc sétára a Balatontól. Jacuzzi, szauna, gyerekbarát környezet, közvetlen foglalás a legjobb áron.">
+<meta name="theme-color" content="#0c1733">
+<!-- TESZTÜZEM: élesítéskor (domain bekötése után) ezt a sort töröld -->
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Nemere Apartmanház – Balatonkenese">
+<meta property="og:description" content="Otthonos apartmanok egész évben, pár perc sétára a Balatontól. Jacuzzi, szauna, gyerekbarát környezet.">
+<meta property="og:image" content="assets/img/hero-l.jpg">
+<link rel="preload" href="assets/fonts/bodoni-moda-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jost-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="assets/logo/n-goldd.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="top" id="top">
+  <a class="brand" href="#top" aria-label="Nemere Apartmanház Balatonkenese">
+    <img src="assets/logo/fo-white.svg" alt="Nemere Apartmanház Balatonkenese" width="207" height="98">
+  </a>
+  <nav class="nav" id="nav" aria-label="Fő menü">
+    <a href="#apartmanok" data-i18n="nav_apts">Apartmanok</a>
+    <a href="#haz" data-i18n="nav_house">A ház</a>
+    <a href="#foglalas" data-i18n="nav_book">Foglalás</a>
+    <a href="#kenese" data-i18n="nav_area">Balatonkenese</a>
+    <a href="#kapcsolat" data-i18n="nav_contact">Kapcsolat</a>
+  </nav>
+  <div class="top-right">
+    <div class="lang" role="group" aria-label="Nyelv / Language">
+      <button type="button" data-lang="hu">HU</button><button type="button" data-lang="en">EN</button><button type="button" data-lang="de">DE</button>
+    </div>
+    <a class="top-call" href="tel:+36702587981">+36 70 258 7981</a>
+    <button class="burger" type="button" aria-label="Menü" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <picture class="hero-img">
+      <source media="(max-width: 700px)" srcset="assets/img/hero-s.jpg">
+      <img src="assets/img/hero-l.jpg" alt="A Nemere Apartmanház kertje és a ház nyáron" fetchpriority="high">
+    </picture>
+    <div class="hero-inner">
+      <p class="kicker" data-i18n="hero_kicker">Balatonkenese · a Balaton keleti kapuja</p>
+      <h1 data-i18n-html="hero_title">Otthonos apartmanok<br><em>egész évben a Balatonnál</em></h1>
+      <p class="lead" data-i18n="hero_lead">Öt apartman egy kertes házban, a város szívében. Wellness a kertben, gyerekbarát részletek, nyugodt esték a terasz alatt.</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="#foglalas" data-i18n="hero_cta">Szabad időpontok</a>
+        <a class="btn-line" href="tel:+36702587981"><span data-i18n="hero_call">Hívj minket</span> · +36 70 258 7981</a>
+      </div>
+    </div>
+    <dl class="hero-facts">
+      <div><dt>5</dt><dd data-i18n="fact_apts">apartman</dd></div>
+      <div><dt>27</dt><dd data-i18n="fact_beds">férőhely</dd></div>
+      <div><dt>365</dt><dd data-i18n="fact_open">napot nyitva egy évben</dd></div>
+    </dl>
+  </section>
+
+  <!-- APARTMANOK -->
+  <section class="apts" id="apartmanok">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="kicker" data-i18n="apts_kicker">Apartmanjaink</p>
+        <h2 data-i18n-html="apts_title">Öt otthon, <em>egy kert</em></h2>
+        <p class="sec-lead" data-i18n="apts_lead">Mindegyik apartmanban saját fürdőszoba, klíma, TV és WiFi.</p>
+      </header>
+    </div>
+    <div class="cards" id="cards"><!-- data.js alapján töltődik --></div>
+  </section>
+
+  <!-- PANORÁMA -->
+  <section class="pano" id="pano" aria-label="Kertpanoráma">
+    <div class="pano-sticky">
+      <div class="pano-track" id="panoTrack">
+        <picture>
+          <source media="(max-width: 700px)" srcset="assets/img/panorama-s.jpg">
+          <img src="assets/img/panorama-l.jpg" alt="Panorámakép a Nemere Apartmanház kertjéről" id="panoImg">
+        </picture>
+      </div>
+      <div class="pano-cap">
+        <p class="kicker" data-i18n="pano_kicker">Körbenézés</p>
+        <h2 data-i18n-html="pano_title">A kert, ahol <em>a nap lelassul</em></h2>
+        <p class="pano-hint" data-i18n="pano_hint">Görgess tovább – körbevezetünk</p>
+      </div>
+      <div class="pano-progress"><span id="panoBar"></span></div>
+    </div>
+  </section>
+
+  <!-- A HÁZ -->
+  <section class="house" id="haz">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="kicker" data-i18n="house_kicker">A ház</p>
+        <h2 data-i18n-html="house_title">Minden, ami <em>egy jó nyaraláshoz</em> kell</h2>
+      </header>
+
+      <article class="feature feature-teal">
+        <div class="feature-media duo">
+          <img src="assets/img/img-6631-l.jpg" alt="Jacuzzi a kertben" loading="lazy">
+          <img src="assets/img/img-7710-l.jpg" alt="Finn szauna belső tere" loading="lazy">
+        </div>
+        <div class="feature-text">
+          <span class="num">01</span>
+          <h3 data-i18n="well_title">Wellness a kertben</h3>
+          <p data-i18n="well_text"></p>
+        </div>
+      </article>
+
+      <article class="feature reverse">
+        <div class="feature-media duo">
+          <img src="assets/img/img-1238-l.jpg" alt="Kiságy plüssállattal" loading="lazy">
+          <img src="assets/img/img-1206-l.jpg" alt="Virágos kert" loading="lazy">
+        </div>
+        <div class="feature-text">
+          <span class="num">02</span>
+          <h3 data-i18n="kids_title">Gyerekekkel is otthon</h3>
+          <p data-i18n="kids_text"></p>
+        </div>
+      </article>
+
+      <article class="feature">
+        <div class="feature-media duo">
+          <img src="assets/img/img-1224-l.jpg" alt="Fedett terasz közös asztallal" loading="lazy">
+          <img src="assets/img/img-1243-l.jpg" alt="Grillsütő a kertben" loading="lazy">
+        </div>
+        <div class="feature-text">
+          <span class="num">03</span>
+          <h3 data-i18n="garden_title">Kerti esték</h3>
+          <p data-i18n="garden_text"></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FOGLALÁS -->
+  <section class="book" id="foglalas">
+    <div class="wrap book-grid">
+      <header class="sec-head light">
+        <p class="kicker" data-i18n="book_kicker">Foglalás</p>
+        <h2 data-i18n-html="book_title">Nézd meg, <em>mikor van hely</em></h2>
+        <p class="sec-lead" data-i18n="book_lead"></p>
+        <a class="btn-line light" href="tel:+36702587981">+36 70 258 7981</a>
+      </header>
+      <div id="nemere-kereso" data-manual="1"></div>
+    </div>
+  </section>
+
+  <!-- BALATONKENESE -->
+  <section class="area" id="kenese">
+    <div class="wrap area-grid">
+      <div>
+        <p class="kicker" data-i18n="area_kicker">A környék</p>
+        <h2 data-i18n-html="area_title">Balatonkenese, <em>a part fölött</em></h2>
+        <p data-i18n="area_text"></p>
+        <div class="routes">
+          <span data-i18n="route">Útvonaltervezés</span>
+          <a href="https://www.google.com/maps/search/?api=1&query=Balatonkenese%2C+Sz%C3%A9chenyi+u.+28" target="_blank" rel="noopener">Google Maps</a>
+          <a href="https://waze.com/ul?q=Balatonkenese%20Sz%C3%A9chenyi%20u.%2028" target="_blank" rel="noopener">Waze</a>
+          <a href="https://maps.apple.com/?q=Balatonkenese,+Sz%C3%A9chenyi+u.+28" target="_blank" rel="noopener">Apple Maps</a>
+        </div>
+      </div>
+      <ol class="area-list">
+        <li><h3 data-i18n="area_1t"></h3><p data-i18n="area_1"></p></li>
+        <li><h3 data-i18n="area_2t"></h3><p data-i18n="area_2"></p></li>
+        <li><h3 data-i18n="area_3t"></h3><p data-i18n="area_3"></p></li>
+        <li><h3 data-i18n="area_4t"></h3><p data-i18n="area_4"></p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- KAPCSOLAT -->
+  <section class="contact" id="kapcsolat">
+    <img class="contact-bg" src="assets/img/img-1717-l.jpg" alt="" loading="lazy">
+    <img class="contact-mark" src="assets/logo/n-gold.svg" alt="" aria-hidden="true">
+    <div class="wrap contact-inner">
+      <p class="kicker" data-i18n="contact_kicker">Kapcsolat</p>
+      <h2 data-i18n-html="contact_title">Kérdésed van? <em>Hívj bátran.</em></h2>
+      <p class="sec-lead" data-i18n="contact_lead"></p>
+      <dl class="contact-list">
+        <div><dt data-i18n="phone">Telefon</dt><dd><a href="tel:+36702587981">+36 70 258 7981</a></dd></div>
+        <div><dt data-i18n="email">E-mail</dt><dd><a href="mailto:kenese@nemereapartmans.hu">kenese@nemereapartmans.hu</a></dd></div>
+        <div><dt data-i18n="address">Cím</dt><dd>8174 Balatonkenese, Széchenyi u. 28.</dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <img class="foot-logo" src="assets/logo/kotel-gold.svg" alt="Nemere Apartmanház Balatonkenese" loading="lazy">
+    <span>© <span id="year">2026</span> Nemere Apartmanház · <span data-i18n="footer_rights">Minden jog fenntartva.</span></span>
+  </div>
+</footer>
+
+<!-- Apartman részletei -->
+<dialog class="apt-dlg" id="aptDlg" aria-labelledby="dlgTitle">
+  <button class="dlg-close" type="button" data-close aria-label="Bezárás">×</button>
+  <div class="dlg-gallery" id="dlgGallery"></div>
+  <div class="dlg-body">
+    <p class="kicker" id="dlgLetter"></p>
+    <h2 id="dlgTitle"></h2>
+    <p id="dlgText"></p>
+    <dl class="dlg-specs" id="dlgSpecs"></dl>
+    <a class="btn btn-gold" href="#foglalas" data-close id="dlgCta"></a>
+  </div>
+</dialog>
+
+<script>
+  window.NEMERE_ENDPOINT = 'https://script.google.com/macros/s/AKfycbz9aayQMHqAsFGH0G2Eo6tesCPVFegflrzKk4AG9yyazov11pJ543bhajU_ZCps_3bi/exec';
+  window.NEMERE_PRICES = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQATAZD2G68Cx0wNm82BfyTn9HuAYVQAlUMlSbbkm-PZaTHuEu3ZitaNUutkDKCNx4Ac-QOyyoQ5g1g/pub?output=csv';
+</script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/kereso.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
