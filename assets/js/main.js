@@ -129,11 +129,26 @@
   var pano = document.getElementById('pano'), track = document.getElementById('panoTrack'),
     pimg = document.getElementById('panoImg'), bar = document.getElementById('panoBar');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var pan = 0, run = 0;
+  var pan = 0, run = 0, lastW = 0, stableH = 0;
 
-  function layoutPano() {
+  // A mobil böngészők címsora görgetéskor eltűnik/megjelenik, ami átméretezést okoz.
+  // Csak szélességváltozásra számolunk újra, a magasságot pedig a "kis" (svh) képernyőmagasságból vesszük.
+  function viewportH() {
+    var probe = document.getElementById('vhProbe');
+    if (!probe) {
+      probe = document.createElement('div'); probe.id = 'vhProbe';
+      probe.style.cssText = 'position:fixed;top:0;height:100svh;width:0;visibility:hidden;pointer-events:none';
+      document.body.appendChild(probe);
+    }
+    return probe.offsetHeight || window.innerHeight;
+  }
+
+  function layoutPano(force) {
     if (!pimg.naturalWidth) return;
-    var vw = window.innerWidth, vh = window.innerHeight, ratio = pimg.naturalWidth / pimg.naturalHeight;
+    var vw = document.documentElement.clientWidth;
+    if (!force && vw === lastW && stableH) return;      // csak magasság változott (címsor) → nem nyúlunk hozzá
+    lastW = vw; stableH = viewportH();
+    var vh = stableH, ratio = pimg.naturalWidth / pimg.naturalHeight;
     var h = Math.max(vh, (vw * 1.4) / ratio);          // legalább 40%-kal szélesebb legyen a képernyőnél
     var w = h * ratio;
     pimg.style.height = h + 'px'; pimg.style.width = w + 'px';
@@ -158,8 +173,9 @@
     if (ticking) return; ticking = true;
     requestAnimationFrame(function () { onScrollHeader(); onScrollPano(); ticking = false; });
   }, { passive: true });
-  window.addEventListener('resize', layoutPano);
-  if (pimg.complete) layoutPano(); else pimg.addEventListener('load', layoutPano);
+  window.addEventListener('resize', function () { layoutPano(false); });
+  window.addEventListener('orientationchange', function () { setTimeout(function () { layoutPano(true); }, 300); });
+  if (pimg.complete) layoutPano(true); else pimg.addEventListener('load', function () { layoutPano(true); });
 
   /* ---------------- Indítás ---------------- */
   document.getElementById('year').textContent = new Date().getFullYear();
