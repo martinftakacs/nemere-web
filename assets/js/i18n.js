@@ -38,6 +38,14 @@ window.NEMERE_I18N = {
     route: 'Útvonaltervezés', contact_kicker: 'Kapcsolat', contact_title: 'Kérdésed van? <em>Hívj bátran.</em>',
     contact_lead: 'Egyedi ajánlatért, hosszabb tartózkodásért vagy az egész ház bérléséért keress minket közvetlenül.',
     address: 'Cím', phone: 'Telefon', email: 'E-mail',
+    nav_groups: 'Csoportoknak',
+    grp_kicker: 'Csoportoknak', grp_title: 'Nagy társaságnak <em>egy közös tér</em>',
+    grp_text: 'Szezonon kívül 18–20 fős csoportokat is fogadunk. Ilyenkor a két földszinti apartman közötti mobilfalat kinyitjuk, így egy tágas közös tér jön létre a közös étkezésekhez, esti beszélgetésekhez – a többiek pedig a ház további apartmanjaiban kényelmesen elférnek.',
+    grp_f1: 'fős csoportok', grp_f2t: 'Szezonon kívül', grp_f2: 'előzetes egyeztetéssel',
+    grp_1: 'Céges csapatépítő, workshop, évzáró', grp_2: 'Osztálykirándulás, edzőtábor', grp_3: 'Családi és baráti összejövetel', grp_4: 'Kerékpáros és vitorlás csapatok – az autók maradhatnak nálunk',
+    grp_cta: 'Csoportos ajánlatot kérek', grp_mail_subject: 'Csoportos ajánlatkérés – Nemere Apartmanház',
+    grp_mail_body: 'Időpont:\nLétszám (felnőtt / gyerek):\nAlkalom (pl. csapatépítő, osztálykirándulás):\nKülön kérés:\n',
+    rev_kicker: 'Vendégeink mondták',
     footer_rights: 'Minden jog fenntartva.'
   },
   en: {
@@ -78,6 +86,14 @@ window.NEMERE_I18N = {
     route: 'Get directions', contact_kicker: 'Contact', contact_title: 'Questions? <em>Just call us.</em>',
     contact_lead: 'For special offers, longer stays or renting the whole house, contact us directly.',
     address: 'Address', phone: 'Phone', email: 'E-mail',
+    nav_groups: 'Groups',
+    grp_kicker: 'For groups', grp_title: 'One shared space <em>for a big group</em>',
+    grp_text: 'Outside the summer season we host groups of 18–20 people. We open the movable wall between the two ground-floor apartments to create one spacious shared room for meals and evening get-togethers – and everyone else sleeps comfortably in the other apartments of the house.',
+    grp_f1: 'guests per group', grp_f2t: 'Off-season', grp_f2: 'by arrangement',
+    grp_1: 'Team building, workshops, company retreats', grp_2: 'School trips, training camps', grp_3: 'Family and friends’ reunions', grp_4: 'Cycling and sailing teams – your cars can stay with us',
+    grp_cta: 'Request a group offer', grp_mail_subject: 'Group enquiry – Nemere Apartments',
+    grp_mail_body: 'Dates:\nGroup size (adults / children):\nOccasion:\nSpecial requests:\n',
+    rev_kicker: 'What our guests say',
     footer_rights: 'All rights reserved.'
   },
   de: {
@@ -118,6 +134,14 @@ window.NEMERE_I18N = {
     route: 'Route planen', contact_kicker: 'Kontakt', contact_title: 'Fragen? <em>Rufen Sie uns an.</em>',
     contact_lead: 'Für Sonderangebote, längere Aufenthalte oder das ganze Haus kontaktieren Sie uns direkt.',
     address: 'Adresse', phone: 'Telefon', email: 'E-Mail',
+    nav_groups: 'Gruppen',
+    grp_kicker: 'Für Gruppen', grp_title: 'Ein gemeinsamer Raum <em>für große Gruppen</em>',
+    grp_text: 'Außerhalb der Sommersaison empfangen wir Gruppen von 18–20 Personen. Dann öffnen wir die mobile Wand zwischen den beiden Erdgeschoss-Apartments – so entsteht ein großer gemeinsamer Raum für Essen und gesellige Abende, und alle übernachten bequem in den weiteren Apartments des Hauses.',
+    grp_f1: 'Personen pro Gruppe', grp_f2t: 'Nebensaison', grp_f2: 'nach Absprache',
+    grp_1: 'Teambuilding, Workshops, Firmenausflüge', grp_2: 'Klassenfahrten, Trainingslager', grp_3: 'Familien- und Freundestreffen', grp_4: 'Rad- und Seglergruppen – die Autos bleiben bei uns',
+    grp_cta: 'Gruppenangebot anfragen', grp_mail_subject: 'Gruppenanfrage – Nemere Apartmanhaus',
+    grp_mail_body: 'Zeitraum:\nGruppengröße (Erwachsene / Kinder):\nAnlass:\nBesondere Wünsche:\n',
+    rev_kicker: 'Das sagen unsere Gäste',
     footer_rights: 'Alle Rechte vorbehalten.'
   }
 };

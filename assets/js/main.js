@@ -2,6 +2,7 @@
   'use strict';
   var APTS = window.NEMERE_APTS, I18N = window.NEMERE_I18N;
   var LANGS = ['hu', 'en', 'de'];
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var lang = 'hu', prices = {};
 
   /* ---------------- Nyelv ---------------- */
@@ -22,6 +23,9 @@
     document.querySelectorAll('[data-i18n-html]').forEach(function (el) { el.innerHTML = t(el.getAttribute('data-i18n-html')); });
     document.querySelectorAll('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === l)); });
     renderCards();
+    var gm = document.getElementById('grpMail');
+    if (gm) gm.href = 'mailto:kenese@nemereapartmans.hu?subject=' + encodeURIComponent(t('grp_mail_subject')) + '&body=' + encodeURIComponent(t('grp_mail_body'));
+    renderReviews();
     var k = document.getElementById('nemere-kereso');
     if (k && window.NemereKereso) { k.setAttribute('data-lang', l); window.NemereKereso.mount(k); }
   }
@@ -110,6 +114,69 @@
     }).catch(function () {});
   }
 
+  /* ---------------- Vélemények (carousel) ---------------- */
+  var reviews = [], revIdx = 0, revTimer = null, revPaused = false;
+  var revSec = document.getElementById('velemenyek'), revStage = document.getElementById('revStage'), revDots = document.getElementById('revDots');
+
+  function loadReviews() {
+    var demo = window.NEMERE_DEMO && window.NEMERE_DEMO.reviews;
+    var p = demo ? Promise.resolve({ reviews: demo }) :
+      (window.NEMERE_ENDPOINT && window.fetch ? fetch(window.NEMERE_ENDPOINT + '?format=reviews').then(function (r) { return r.json(); }) : Promise.reject());
+    p.then(function (d) { reviews = (d && d.reviews) || []; renderReviews(); }).catch(function () {});
+  }
+  function esc(x) { return String(x || '').replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function scoreTxt(r) {
+    if (!r.score) return '';
+    var n = parseFloat(String(r.score).replace(',', '.'));
+    return isNaN(n) ? r.score : r.score + ' / ' + (n <= 5 ? 5 : 10);
+  }
+  function orderedReviews() {   // az aktuális nyelvű vélemények előre
+    return reviews.slice().sort(function (a, b) { return (b.lang === lang) - (a.lang === lang); });
+  }
+  function renderReviews() {
+    if (!revSec) return;
+    if (!reviews.length) { revSec.hidden = true; return; }
+    revSec.hidden = false;
+    var list = orderedReviews();
+    revStage.innerHTML = list.map(function (r, i) {
+      var meta = [r.source, scoreTxt(r), r.date].filter(Boolean).join(' · ');
+      return '<figure class="rev-item' + (i === 0 ? ' on' : '') + '"><span class="rev-mark" aria-hidden="true">“</span>' +
+        '<blockquote class="rev-text' + (r.text.length > 220 ? ' long' : '') + '">' + esc(r.text) + '</blockquote>' +
+        '<figcaption><div class="rev-who">' + esc(r.name) + (r.from ? ', ' + esc(r.from) : '') + '</div>' +
+        (meta ? '<div class="rev-meta">' + esc(meta) + '</div>' : '') + '</figcaption></figure>';
+    }).join('');
+    revDots.innerHTML = list.map(function (_, i) { return '<button type="button" aria-label="' + (i + 1) + '"' + (i === 0 ? ' aria-current="true"' : '') + ' data-i="' + i + '"></button>'; }).join('');
+    revDots.querySelectorAll('button').forEach(function (b) { b.onclick = function () { showReview(Number(b.getAttribute('data-i'))); restartRev(); }; });
+    document.querySelector('.rev-controls').style.display = list.length > 1 ? '' : 'none';
+    revIdx = 0; restartRev();
+  }
+  function showReview(i) {
+    var items = revStage.querySelectorAll('.rev-item'), n = items.length;
+    if (!n) return;
+    i = (i + n) % n;
+    items.forEach(function (el, j) { el.classList.toggle('out', j === revIdx && j !== i); el.classList.toggle('on', j === i); });
+    revDots.querySelectorAll('button').forEach(function (b, j) { b.setAttribute('aria-current', String(j === i)); });
+    revIdx = i;
+  }
+  function restartRev() {
+    clearInterval(revTimer);
+    if (reduce || reviews.length < 2) return;
+    revTimer = setInterval(function () { if (!revPaused && !document.hidden) showReview(revIdx + 1); }, 7000);
+  }
+  if (revSec) {
+    document.querySelectorAll('[data-rev]').forEach(function (b) { b.onclick = function () { showReview(revIdx + Number(b.getAttribute('data-rev'))); restartRev(); }; });
+    revSec.addEventListener('mouseenter', function () { revPaused = true; });
+    revSec.addEventListener('mouseleave', function () { revPaused = false; });
+    revSec.addEventListener('focusin', function () { revPaused = true; });
+    revSec.addEventListener('focusout', function () { revPaused = false; });
+    var tx = null;
+    revStage.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; revPaused = true; }, { passive: true });
+    revStage.addEventListener('touchend', function (e) {
+      var dx = e.changedTouches[0].clientX - tx; revPaused = false;
+      if (Math.abs(dx) > 40) { showReview(revIdx + (dx < 0 ? 1 : -1)); restartRev(); }
+    }, { passive: true });
+  }
+
   /* ---------------- Fejléc, menü ---------------- */
   var top = document.getElementById('top'), burger = document.querySelector('.burger'), nav = document.getElementById('nav');
   function onScrollHeader() { top.classList.toggle('solid', window.scrollY > 40); }
@@ -128,7 +195,6 @@
   /* ---------------- Panoráma: görgetésre jobbról balra ---------------- */
   var pano = document.getElementById('pano'), track = document.getElementById('panoTrack'),
     pimg = document.getElementById('panoImg'), bar = document.getElementById('panoBar');
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var pan = 0, run = 0, lastW = 0, stableH = 0;
 
   // A mobil böngészők címsora görgetéskor eltűnik/megjelenik, ami átméretezést okoz.
@@ -182,4 +248,5 @@
   applyLang(pickLang());
   onScrollHeader();
   loadPrices();
+  loadReviews();
 })();

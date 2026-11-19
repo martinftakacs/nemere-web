@@ -169,6 +169,43 @@ h1 em, h2 em { font-style: italic; color: var(--gold); }
 .feature-teal .feature-text p { color: rgba(255, 255, 255, .8); }
 .feature-teal .num { color: var(--gold-2); }
 
+/* ---------- Csoportoknak ---------- */
+.groups { padding: var(--sec) 0; background: var(--sand); }
+.groups-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px, 6vw, 96px); align-items: center; }
+.groups-media { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+.groups-media img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+.groups-media img:last-child { margin-top: 22%; }
+.groups-text h2 { font-size: clamp(34px, 4.4vw, 58px); margin-bottom: 22px; }
+.groups-text > p { color: var(--muted); max-width: 520px; }
+.groups-facts { display: flex; gap: clamp(24px, 4vw, 54px); margin: 30px 0 8px; }
+.groups-facts div { border-left: 1px solid var(--gold); padding-left: 14px; }
+.groups-facts dt { font: 400 clamp(26px, 2.6vw, 36px)/1.1 var(--serif); }
+.groups-facts dd { margin: 4px 0 0; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.groups-list { list-style: none; padding: 0; margin: 26px 0 32px; border-top: 1px solid rgba(12, 23, 51, .18); }
+.groups-list li { padding: 11px 0 11px 28px; border-bottom: 1px solid rgba(12, 23, 51, .18); position: relative; font-size: 15.5px; }
+.groups-list li::before { content: ""; position: absolute; left: 0; top: 50%; width: 14px; height: 1px; background: var(--gold); }
+.groups-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 30px; }
+
+/* ---------- Vélemények ---------- */
+.reviews { padding: var(--sec) 0; background: var(--beige); text-align: center; overflow: hidden; }
+.reviews .kicker { justify-content: center; }
+.reviews .kicker::after { content: ""; width: 34px; height: 1px; background: currentColor; }
+.rev-stage { position: relative; max-width: 900px; margin: 10px auto 0; min-height: 260px; touch-action: pan-y; }
+.rev-item { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; transform: translateX(24px); transition: opacity .7s ease, transform .7s ease; pointer-events: none; }
+.rev-item.on { position: relative; opacity: 1; transform: none; pointer-events: auto; }
+.rev-item.out { transform: translateX(-24px); }
+.rev-mark { font: italic 400 110px/0.6 var(--serif); color: var(--gold); height: 44px; }
+.rev-text { font: 400 clamp(22px, 2.6vw, 34px)/1.35 var(--serif); margin: 0 0 28px; max-width: 30ch; }
+.rev-text.long { font-size: clamp(18px, 1.8vw, 24px); max-width: 46ch; }
+.rev-who { font-size: 15px; font-weight: 500; letter-spacing: .04em; }
+.rev-meta { margin-top: 6px; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); }
+.rev-controls { display: flex; align-items: center; justify-content: center; gap: 22px; margin-top: 40px; }
+.rev-btn { width: 44px; height: 44px; border: 1px solid var(--line); background: none; font-size: 20px; color: var(--ink); cursor: pointer; }
+.rev-btn:hover { border-color: var(--gold); }
+.rev-dots { display: flex; gap: 10px; }
+.rev-dots button { width: 26px; height: 2px; padding: 0; border: 0; background: var(--line); cursor: pointer; }
+.rev-dots button[aria-current="true"] { background: var(--gold); }
+
 /* ---------- Foglalás ---------- */
 .book { background: var(--navy); color: #fff; padding: var(--sec) 0; }
 .book-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(30px, 5vw, 80px); align-items: start; }
@@ -261,6 +298,8 @@ h1 em, h2 em { font-style: italic; color: var(--gold); }
   .feature.reverse .feature-media { order: 0; }
   .feature-teal { margin-left: calc(-1 * var(--pad)); margin-right: calc(-1 * var(--pad)); }
   .book-grid, .area-grid { grid-template-columns: 1fr; }
+  .groups-grid { grid-template-columns: 1fr; }
+  .rev-stage { min-height: 320px; }
   .book .sec-head { position: static; }
   .contact-list { grid-template-columns: 1fr; }
   .card h3 { min-height: 0; }

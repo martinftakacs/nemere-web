@@ -25,6 +25,7 @@
   <nav class="nav" id="nav" aria-label="Fő menü">
     <a href="#apartmanok" data-i18n="nav_apts">Apartmanok</a>
     <a href="#haz" data-i18n="nav_house">A ház</a>
+    <a href="#csoportok" data-i18n="nav_groups">Csoportoknak</a>
     <a href="#foglalas" data-i18n="nav_book">Foglalás</a>
     <a href="#kenese" data-i18n="nav_area">Balatonkenese</a>
     <a href="#kapcsolat" data-i18n="nav_contact">Kapcsolat</a>
@@ -134,6 +135,45 @@
           <p data-i18n="garden_text"></p>
         </div>
       </article>
+    </div>
+  </section>
+
+  <!-- CSOPORTOKNAK -->
+  <section class="groups" id="csoportok">
+    <div class="wrap groups-grid">
+      <div class="groups-media">
+        <img src="assets/img/a-02-l.jpg" alt="Étkező a földszinti apartmanban" loading="lazy">
+        <img src="assets/img/b-02-l.jpg" alt="Nappali a földszinti apartmanban" loading="lazy">
+      </div>
+      <div class="groups-text">
+        <p class="kicker" data-i18n="grp_kicker">Csoportoknak</p>
+        <h2 data-i18n-html="grp_title">Nagy társaságnak <em>egy közös tér</em></h2>
+        <p data-i18n="grp_text"></p>
+        <dl class="groups-facts">
+          <div><dt>18–20</dt><dd data-i18n="grp_f1">fős csoportok</dd></div>
+          <div><dt data-i18n="grp_f2t">Ősztől tavaszig</dt><dd data-i18n="grp_f2">szezonon kívül</dd></div>
+        </dl>
+        <ul class="groups-list">
+          <li data-i18n="grp_1"></li><li data-i18n="grp_2"></li><li data-i18n="grp_3"></li><li data-i18n="grp_4"></li>
+        </ul>
+        <div class="groups-actions">
+          <a class="btn btn-gold" id="grpMail" href="mailto:kenese@nemereapartmans.hu" data-i18n="grp_cta">Csoportos ajánlatot kérek</a>
+          <a class="btn-line" href="tel:+36702587981">+36 70 258 7981</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VÉLEMÉNYEK (a Channel Manager táblázat „Vélemények” lapjáról; üresen rejtve marad) -->
+  <section class="reviews" id="velemenyek" hidden>
+    <div class="wrap">
+      <p class="kicker" data-i18n="rev_kicker">Vendégeink mondták</p>
+      <div class="rev-stage" id="revStage" aria-live="polite"></div>
+      <div class="rev-controls">
+        <button type="button" class="rev-btn" data-rev="-1" aria-label="‹">‹</button>
+        <div class="rev-dots" id="revDots"></div>
+        <button type="button" class="rev-btn" data-rev="1" aria-label="›">›</button>
+      </div>
     </div>
   </section>
 
