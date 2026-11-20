@@ -373,3 +373,9 @@ mark.todo { background: #ffe58a; color: #3a2a00; padding: 1px 4px; font-size: .9
 .foot-links a:hover { color: var(--gold-2); }
 .foot-ntak { color: rgba(255, 255, 255, .5); }
 @media (max-width: 600px) { .legal dl.facts { grid-template-columns: 1fr; } .legal dl.facts dt { border-bottom: 0; padding-bottom: 0; } }
+
+/* közösségi linkek */
+.social { display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0 0; }
+.social a { display: inline-block; padding: 9px 18px; border: 1px solid rgba(201, 168, 106, .55); border-radius: 999px; color: #fff; text-decoration: none; font-size: 14px; letter-spacing: .04em; transition: background .2s, color .2s; }
+.social a:hover, .social a:focus-visible { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+.legal .social a { color: var(--navy); border-color: var(--gold); }
