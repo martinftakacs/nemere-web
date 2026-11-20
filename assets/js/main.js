@@ -61,6 +61,7 @@
     var imgs = '';
     for (var n = 0; n < a.photos; n++) imgs += '<img src="' + photo(a, n, 'l') + '" alt="' + a.name[lang] + ' – ' + (n + 1) + '" loading="' + (n ? 'lazy' : 'eager') + '">';
     g.innerHTML = imgs;
+    g.querySelectorAll('img').forEach(function (im, k) { im.addEventListener('click', function () { openLightbox([].map.call(g.querySelectorAll('img'), function (x) { return { src: x.src, alt: x.alt }; }), k); }); });
     var media = g.parentNode.querySelector('.dlg-media');
     if (!media) {
       media = document.createElement('div'); media.className = 'dlg-media';
@@ -176,6 +177,45 @@
       if (Math.abs(dx) > 40) { showReview(revIdx + (dx < 0 ? 1 : -1)); restartRev(); }
     }, { passive: true });
   }
+
+
+  /* ---------------- Képnagyító (lightbox) ---------------- */
+  var lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg'), lbCount = document.getElementById('lbCount');
+  var lbList = [], lbI = 0;
+  function lbShow(i) {
+    var n = lbList.length; if (!n) return;
+    lbI = (i + n) % n;
+    lbImg.src = lbList[lbI].src; lbImg.alt = lbList[lbI].alt || '';
+    lbCount.textContent = n > 1 ? (lbI + 1) + ' / ' + n : '';
+    lb.querySelector('.lb-prev').style.display = lb.querySelector('.lb-next').style.display = n > 1 ? '' : 'none';
+    [lbI + 1, lbI - 1].forEach(function (j) { var x = lbList[(j + n) % n]; if (x) { var im = new Image(); im.src = x.src; } });
+  }
+  function openLightbox(list, i) {
+    lbList = list; lbShow(i || 0);
+    if (lb.showModal) lb.showModal(); else lb.setAttribute('open', '');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb() { if (lb.close) lb.close(); else lb.removeAttribute('open'); }
+  lb.addEventListener('close', function () { if (!dlg.open) document.body.style.overflow = ''; lbImg.removeAttribute('src'); });
+  lb.querySelector('.lb-close').onclick = closeLb;
+  lb.querySelector('.lb-prev').onclick = function () { lbShow(lbI - 1); };
+  lb.querySelector('.lb-next').onclick = function () { lbShow(lbI + 1); };
+  lb.addEventListener('click', function (e) { if (e.target === lb || e.target.classList.contains('lb-img')) closeLb(); });
+  lb.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); lbShow(lbI - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); lbShow(lbI + 1); }
+  });
+  var lbx = null;
+  lb.addEventListener('touchstart', function (e) { lbx = e.touches.length === 1 ? e.touches[0].clientX : null; }, { passive: true });
+  lb.addEventListener('touchend', function (e) {
+    if (lbx === null) return; var dx = e.changedTouches[0].clientX - lbx; lbx = null;
+    if (Math.abs(dx) > 45) lbShow(lbI + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+  document.querySelectorAll('.gallery').forEach(function (g) {
+    var btns = [].slice.call(g.querySelectorAll('button[data-full]'));
+    var list = btns.map(function (b) { return { src: b.getAttribute('data-full'), alt: b.querySelector('img').alt }; });
+    btns.forEach(function (b, i) { b.addEventListener('click', function () { openLightbox(list, i); }); });
+  });
 
   /* ---------------- Fejléc, menü ---------------- */
   var top = document.getElementById('top'), burger = document.querySelector('.burger'), nav = document.getElementById('nav');
