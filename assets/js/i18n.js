@@ -40,12 +40,13 @@ window.NEMERE_I18N = {
     address: 'Cím', phone: 'Telefon', email: 'E-mail',
     nav_groups: 'Csoportoknak',
     grp_kicker: 'Csoportoknak', grp_title: 'Nagy társaságnak <em>egy közös tér</em>',
-    grp_text: 'Szezonon kívül 18–20 fős csoportokat is fogadunk. Ilyenkor a két földszinti apartman közötti mobilfalat kinyitjuk, így egy tágas közös tér jön létre a közös étkezésekhez, esti beszélgetésekhez – a többiek pedig a ház további apartmanjaiban kényelmesen elférnek.',
-    grp_f1: 'fős csoportok', grp_f2t: 'Szezonon kívül', grp_f2: 'előzetes egyeztetéssel',
+    grp_text: 'Egész évben fogadunk 18–20 fős csoportokat, a foglaltságtól függően. A nyári szezonon kívül a két földszinti apartman közötti mobilfalat is kinyitjuk, így egy tágas közös tér jön létre a közös étkezésekhez, esti beszélgetésekhez – a többiek pedig a ház további apartmanjaiban kényelmesen elférnek.',
+    grp_f1: 'fős csoportok', grp_f2t: 'Egész évben', grp_f2: 'foglaltságtól függően',
     grp_1: 'Céges csapatépítő, workshop, évzáró', grp_2: 'Osztálykirándulás, edzőtábor', grp_3: 'Családi és baráti összejövetel', grp_4: 'Kerékpáros és vitorlás csapatok – az autók maradhatnak nálunk',
     grp_cta: 'Csoportos ajánlatot kérek', grp_mail_subject: 'Csoportos ajánlatkérés – Nemere Apartmanház',
     grp_mail_body: 'Időpont:\nLétszám (felnőtt / gyerek):\nAlkalom (pl. csapatépítő, osztálykirándulás):\nKülön kérés:\n',
     rev_kicker: 'Vendégeink mondták',
+    legal_imp: 'Impresszum', legal_aszf: 'ÁSZF', legal_priv: 'Adatkezelési tájékoztató', ntak: 'NTAK reg. szám',
     footer_rights: 'Minden jog fenntartva.'
   },
   en: {
@@ -88,12 +89,13 @@ window.NEMERE_I18N = {
     address: 'Address', phone: 'Phone', email: 'E-mail',
     nav_groups: 'Groups',
     grp_kicker: 'For groups', grp_title: 'One shared space <em>for a big group</em>',
-    grp_text: 'Outside the summer season we host groups of 18–20 people. We open the movable wall between the two ground-floor apartments to create one spacious shared room for meals and evening get-togethers – and everyone else sleeps comfortably in the other apartments of the house.',
-    grp_f1: 'guests per group', grp_f2t: 'Off-season', grp_f2: 'by arrangement',
+    grp_text: 'We welcome groups of 18–20 people all year round, subject to availability. Outside the summer season we also open the movable wall between the two ground-floor apartments, creating one spacious shared room for meals and evening get-togethers – and everyone sleeps comfortably in the other apartments of the house.',
+    grp_f1: 'guests per group', grp_f2t: 'All year round', grp_f2: 'subject to availability',
     grp_1: 'Team building, workshops, company retreats', grp_2: 'School trips, training camps', grp_3: 'Family and friends’ reunions', grp_4: 'Cycling and sailing teams – your cars can stay with us',
     grp_cta: 'Request a group offer', grp_mail_subject: 'Group enquiry – Nemere Apartments',
     grp_mail_body: 'Dates:\nGroup size (adults / children):\nOccasion:\nSpecial requests:\n',
     rev_kicker: 'What our guests say',
+    legal_imp: 'Legal notice', legal_aszf: 'Terms & conditions', legal_priv: 'Privacy policy', ntak: 'NTAK reg. no.',
     footer_rights: 'All rights reserved.'
   },
   de: {
@@ -136,12 +138,13 @@ window.NEMERE_I18N = {
     address: 'Adresse', phone: 'Telefon', email: 'E-Mail',
     nav_groups: 'Gruppen',
     grp_kicker: 'Für Gruppen', grp_title: 'Ein gemeinsamer Raum <em>für große Gruppen</em>',
-    grp_text: 'Außerhalb der Sommersaison empfangen wir Gruppen von 18–20 Personen. Dann öffnen wir die mobile Wand zwischen den beiden Erdgeschoss-Apartments – so entsteht ein großer gemeinsamer Raum für Essen und gesellige Abende, und alle übernachten bequem in den weiteren Apartments des Hauses.',
-    grp_f1: 'Personen pro Gruppe', grp_f2t: 'Nebensaison', grp_f2: 'nach Absprache',
+    grp_text: 'Wir empfangen das ganze Jahr über Gruppen von 18–20 Personen, je nach Verfügbarkeit. Außerhalb der Sommersaison öffnen wir zusätzlich die mobile Wand zwischen den beiden Erdgeschoss-Apartments – so entsteht ein großer gemeinsamer Raum für Essen und gesellige Abende, und alle übernachten bequem in den weiteren Apartments des Hauses.',
+    grp_f1: 'Personen pro Gruppe', grp_f2t: 'Ganzjährig', grp_f2: 'je nach Verfügbarkeit',
     grp_1: 'Teambuilding, Workshops, Firmenausflüge', grp_2: 'Klassenfahrten, Trainingslager', grp_3: 'Familien- und Freundestreffen', grp_4: 'Rad- und Seglergruppen – die Autos bleiben bei uns',
     grp_cta: 'Gruppenangebot anfragen', grp_mail_subject: 'Gruppenanfrage – Nemere Apartmanhaus',
     grp_mail_body: 'Zeitraum:\nGruppengröße (Erwachsene / Kinder):\nAnlass:\nBesondere Wünsche:\n',
     rev_kicker: 'Das sagen unsere Gäste',
+    legal_imp: 'Impressum', legal_aszf: 'AGB', legal_priv: 'Datenschutz', ntak: 'NTAK-Reg.-Nr.',
     footer_rights: 'Alle Rechte vorbehalten.'
   }
 };
