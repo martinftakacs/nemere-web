@@ -412,3 +412,11 @@ mark.todo { background: #ffe58a; color: #3a2a00; padding: 1px 4px; font-size: .9
   .nav.open .nav-social { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 18px; max-width: 100%; padding: 0 24px; box-sizing: border-box; }
   .nav-social a { font: 400 14px/1.2 var(--sans) !important; padding: 8px 16px !important; border: 1px solid rgba(201, 168, 106, .55); border-radius: 999px; letter-spacing: .04em; }
 }
+
+.dlg-hint { display: flex; align-items: center; gap: 10px; margin: 0 0 22px; padding: 10px 14px; background: rgba(184, 149, 90, .12); border-left: 2px solid var(--gold); font-size: 14px; line-height: 1.4; color: var(--ink); }
+.dlg-hint svg { flex: none; width: 20px; height: 20px; fill: var(--gold); }
+@media (max-width: 900px) {
+  .nav { justify-content: flex-start; padding: 120px 24px 40px; gap: 16px; overflow-y: auto; }
+  .nav a { font-size: 30px; letter-spacing: .01em; }
+}
+@media (max-width: 900px) and (max-height: 700px) { .nav { padding-top: 100px; gap: 10px; } .nav a { font-size: 26px; } }
